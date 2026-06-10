@@ -1,0 +1,32 @@
+/// <summary>
+/// Error contract returned to external integration callers.
+/// </summary>
+[DataContractAttribute]
+[Newtonsoft.Json.JsonObjectAttribute(IsReference = false)]
+class ThreePLErrorContract
+{
+    Notes message;
+    Notes details;
+    Notes trace;
+
+    [DataMemberAttribute('message')]
+    public Notes parmMessage(Notes _message = message)
+    {
+        message = _message;
+        return message;
+    }
+
+    [DataMemberAttribute('details')]
+    public Notes parmDetails(Notes _details = details)
+    {
+        details = _details;
+        return details;
+    }
+
+    [DataMemberAttribute('trace')]
+    public Notes parmTrace(Notes _trace = trace)
+    {
+        trace = _trace;
+        return trace;
+    }
+}
