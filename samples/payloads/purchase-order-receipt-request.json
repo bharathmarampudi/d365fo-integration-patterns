@@ -1,0 +1,13 @@
+{
+  "legalEntity": "usmf",
+  "purchaseOrder": "PO-000001",
+  "productReceiptNumber": "3PL-RECEIPT-000001",
+  "receiptDate": "06/10/2026",
+  "lines": [
+    {
+      "lineNumber": 1,
+      "itemNumber": "ITEM-0001",
+      "qty": 5
+    }
+  ]
+}
