@@ -1,0 +1,11 @@
+{
+  "success": false,
+  "data": null,
+  "errors": [
+    {
+      "message": "Sales order is required.",
+      "details": "salesId was not provided in the request.",
+      "trace": "Validation failed before posting."
+    }
+  ]
+}
