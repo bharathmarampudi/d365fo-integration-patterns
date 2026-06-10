@@ -1,0 +1,37 @@
+/// <summary>
+/// Standard response envelope used by sample 3PL service operations.
+/// </summary>
+public class ThreePLResponseContract
+{
+    private ThreePLBaseContract data;
+    private List errors;
+    private boolean success;
+
+    [DataMemberAttribute('success')]
+    public boolean parmSuccess(boolean _value = success)
+    {
+        success = _value;
+        return success;
+    }
+
+    [
+        DataMemberAttribute('data'),
+        AifCollectionTypeAttribute('data', Types::AnyType),
+        AifCollectionTypeAttribute('return', Types::Class, classStr(ThreePLBaseContract))
+    ]
+    public ThreePLBaseContract parmData(ThreePLBaseContract _data = data)
+    {
+        data = _data;
+        return data;
+    }
+
+    [
+        DataMemberAttribute('errors'),
+        DataCollectionAttribute(Types::Class, classStr(ThreePLErrorContract))
+    ]
+    public List parmErrors(List _errors = errors)
+    {
+        errors = _errors;
+        return errors;
+    }
+}
