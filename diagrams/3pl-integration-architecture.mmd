@@ -1,0 +1,12 @@
+flowchart LR
+    A[3PL / External Warehouse System] --> B[HTTPS API Call]
+    B --> C[D365 F&O Custom Service]
+    C --> D[Data Contract]
+    D --> E[Validation Layer]
+    E --> F{Valid?}
+    F -- No --> G[Response Contract with Errors]
+    F -- Yes --> H[Standard D365 Posting Framework]
+    H --> I[Posted Document / Journal]
+    I --> J[Response Contract with Result]
+    G --> K[3PL Receives Response]
+    J --> K
