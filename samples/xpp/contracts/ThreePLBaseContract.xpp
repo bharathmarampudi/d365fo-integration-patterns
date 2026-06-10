@@ -1,0 +1,8 @@
+/// <summary>
+/// Base class for public sample data contracts.
+/// </summary>
+[DataContractAttribute]
+[Newtonsoft.Json.JsonObjectAttribute(IsReference = false)]
+class ThreePLBaseContract
+{
+}
