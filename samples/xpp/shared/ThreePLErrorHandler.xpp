@@ -1,0 +1,22 @@
+/// <summary>
+/// Converts validation messages into API-friendly error contracts.
+/// Public sample only.
+/// </summary>
+class ThreePLErrorHandler
+{
+    public static ThreePLErrorContract fromMessage(Notes _message, Notes _details = '', Notes _trace = '')
+    {
+        ThreePLErrorContract error = new ThreePLErrorContract();
+
+        error.parmMessage(_message);
+        error.parmDetails(_details);
+        error.parmTrace(_trace);
+
+        return error;
+    }
+
+    public static ThreePLErrorContract fromPostingFailure(Notes _message)
+    {
+        return ThreePLErrorHandler::fromMessage(_message, _message, 'Posting framework returned an error.');
+    }
+}
