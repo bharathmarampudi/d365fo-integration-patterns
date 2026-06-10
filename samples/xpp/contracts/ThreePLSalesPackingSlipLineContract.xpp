@@ -1,0 +1,24 @@
+/// <summary>
+/// Line-level reference for sales packing slip posting.
+/// </summary>
+[DataContractAttribute]
+[Newtonsoft.Json.JsonObjectAttribute(IsReference = false)]
+class ThreePLSalesPackingSlipLineContract extends ThreePLBaseContract
+{
+    InventTransId inventTransId;
+    Qty qty;
+
+    [DataMemberAttribute('inventTransId')]
+    public InventTransId parmInventTransId(InventTransId _inventTransId = inventTransId)
+    {
+        inventTransId = _inventTransId;
+        return inventTransId;
+    }
+
+    [DataMemberAttribute('qty')]
+    public Qty parmQty(Qty _qty = qty)
+    {
+        qty = _qty;
+        return qty;
+    }
+}
