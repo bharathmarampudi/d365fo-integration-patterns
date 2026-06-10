@@ -1,0 +1,24 @@
+class ThreePLResultContract extends ThreePLBaseContract
+{
+    str legalEntity;
+    str sourceDocument;
+    str postedDocument;
+
+    public str parmLegalEntity(str _legalEntity = legalEntity)
+    {
+        legalEntity = _legalEntity;
+        return legalEntity;
+    }
+
+    public str parmSourceDocument(str _sourceDocument = sourceDocument)
+    {
+        sourceDocument = _sourceDocument;
+        return sourceDocument;
+    }
+
+    public str parmPostedDocument(str _postedDocument = postedDocument)
+    {
+        postedDocument = _postedDocument;
+        return postedDocument;
+    }
+}
