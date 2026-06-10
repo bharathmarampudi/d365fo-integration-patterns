@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "data": {
+    "legalEntity": "usmf",
+    "salesId": "SO-000001",
+    "packingSlipId": "PS-000001"
+  },
+  "errors": []
+}
