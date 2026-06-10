@@ -1,0 +1,13 @@
+{
+  "legalEntity": "usmf",
+  "transferOrder": "TO-000001",
+  "operation": "Ship",
+  "postingDate": "06/10/2026",
+  "lines": [
+    {
+      "lineNumber": 1,
+      "itemNumber": "ITEM-0001",
+      "qty": 3
+    }
+  ]
+}
