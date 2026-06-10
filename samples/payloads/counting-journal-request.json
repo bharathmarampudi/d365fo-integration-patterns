@@ -1,0 +1,14 @@
+{
+  "legalEntity": "usmf",
+  "journalName": "COUNT",
+  "externalTransactionId": "3PL-COUNT-000001",
+  "countingDate": "06/10/2026",
+  "lines": [
+    {
+      "itemNumber": "ITEM-0001",
+      "warehouse": "WH-001",
+      "location": "LOC-001",
+      "countedQty": 10
+    }
+  ]
+}
