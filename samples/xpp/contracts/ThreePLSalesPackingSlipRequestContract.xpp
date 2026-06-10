@@ -1,0 +1,53 @@
+/// <summary>
+/// Request contract for posting a sales packing slip from a 3PL update.
+/// Public sample only.
+/// </summary>
+[DataContractAttribute]
+[Newtonsoft.Json.JsonObjectAttribute(IsReference = false)]
+class ThreePLSalesPackingSlipRequestContract extends ThreePLBaseContract
+{
+    DataAreaId legalEntity;
+    SalesId salesId;
+    ShipCarrierTrackingNum trackingNumber;
+    str packingSlipDate;
+    List salesLineRef;
+
+    [DataMemberAttribute('legalEntity')]
+    public DataAreaId parmLegalEntity(DataAreaId _legalEntity = legalEntity)
+    {
+        legalEntity = _legalEntity;
+        return legalEntity;
+    }
+
+    [DataMemberAttribute('salesId')]
+    public SalesId parmSalesId(SalesId _salesId = salesId)
+    {
+        salesId = _salesId;
+        return salesId;
+    }
+
+    [DataMemberAttribute('trackingNumber')]
+    public ShipCarrierTrackingNum parmTrackingNumber(ShipCarrierTrackingNum _trackingNumber = trackingNumber)
+    {
+        trackingNumber = _trackingNumber;
+        return trackingNumber;
+    }
+
+    [DataMemberAttribute('packingSlipDate')]
+    public str parmPackingSlipDate(str _packingSlipDate = packingSlipDate)
+    {
+        packingSlipDate = _packingSlipDate;
+        return packingSlipDate;
+    }
+
+    [
+        DataMemberAttribute('salesLineRef'),
+        AifCollectionTypeAttribute('_salesLineRef', Types::Class, classStr(ThreePLSalesPackingSlipLineContract)),
+        AifCollectionTypeAttribute('return', Types::Class, classStr(ThreePLSalesPackingSlipLineContract))
+    ]
+    public List parmSalesLineRef(List _salesLineRef = salesLineRef)
+    {
+        salesLineRef = _salesLineRef;
+        return salesLineRef;
+    }
+}
