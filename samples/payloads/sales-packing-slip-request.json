@@ -1,0 +1,16 @@
+{
+  "legalEntity": "usmf",
+  "salesId": "SO-000001",
+  "trackingNumber": "TRACKING-000001",
+  "packingSlipDate": "06/10/2026",
+  "salesLineRef": [
+    {
+      "inventTransId": "INVTRANS-000001",
+      "qty": 2
+    },
+    {
+      "inventTransId": "INVTRANS-000002",
+      "qty": 1
+    }
+  ]
+}
