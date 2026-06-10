@@ -1,0 +1,96 @@
+/// <summary>
+/// Public sample service showing a 3PL sales packing slip posting pattern.
+/// This is sanitized sample code and should be adapted before real implementation.
+/// </summary>
+class ThreePLSalesPackingSlipService
+{
+    ThreePLSalesPackingSlipRequestContract request;
+    List errorList;
+
+    public Object postSalesPackingSlip(ThreePLSalesPackingSlipRequestContract _request)
+    {
+        ThreePLResponseContract response = new ThreePLResponseContract();
+        ThreePLResultContract result = new ThreePLResultContract();
+        CompanyInfo companyInfo;
+
+        request = _request;
+        errorList = new List(Types::Class);
+
+        try
+        {
+            companyInfo = CompanyInfo::findDataArea(request.parmLegalEntity());
+
+            if (!companyInfo.RecId)
+            {
+                errorList.addEnd(ThreePLErrorHandler::fromMessage('Legal entity is not valid.'));
+            }
+            else
+            {
+                changecompany(companyInfo.DataArea)
+                {
+                    if (this.validateRequest())
+                    {
+                        ttsbegin;
+                        this.postUsingStandardFramework();
+                        ttscommit;
+
+                        result.parmLegalEntity(curExt());
+                        result.parmSourceDocument(request.parmSalesId());
+                        result.parmPostedDocument('POSTED-DOCUMENT-NUMBER');
+                        response.parmData(result);
+                        response.parmSuccess(true);
+                    }
+                }
+            }
+        }
+        catch
+        {
+            errorList.addEnd(ThreePLErrorHandler::fromPostingFailure('Posting failed. Review D365 validation messages.'));
+        }
+
+        response.parmErrors(errorList);
+        return response;
+    }
+
+    private boolean validateRequest()
+    {
+        boolean valid = true;
+
+        if (!request.parmLegalEntity())
+        {
+            errorList.addEnd(ThreePLErrorHandler::fromMessage('Legal entity is required.'));
+            valid = false;
+        }
+
+        if (!request.parmSalesId())
+        {
+            errorList.addEnd(ThreePLErrorHandler::fromMessage('Sales order is required.'));
+            valid = false;
+        }
+
+        if (!request.parmSalesLineRef())
+        {
+            errorList.addEnd(ThreePLErrorHandler::fromMessage('At least one sales line reference is required.'));
+            valid = false;
+        }
+
+        if (!request.parmTrackingNumber())
+        {
+            errorList.addEnd(ThreePLErrorHandler::fromMessage('Tracking number is required.'));
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    private void postUsingStandardFramework()
+    {
+        // Pattern only:
+        // 1. Find the source sales order.
+        // 2. Build posting parameter records.
+        // 3. Add selected line references and quantities.
+        // 4. Call the D365 sales packing slip posting framework.
+        // 5. Return the posted document reference in the response contract.
+        // Avoid direct updates to posted transaction tables.
+    }
+}
